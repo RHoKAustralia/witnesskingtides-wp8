@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using KingTides.Core.Api.Communication;
 using KingTides.Core.Api.Models;
-using KingTides.Core.ViewModels;
-using KingTides.Wp8.Pan.Resources;
 
-namespace KingTides.Wp8.Pan.ViewModels
+namespace KingTides.Core.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
@@ -42,11 +39,14 @@ namespace KingTides.Wp8.Pan.ViewModels
         /// </summary>
         public async void LoadData()
         {
-            this.IsDataLoaded = false;
+            IsDataLoaded = false;
             var client = new Client("http://10.0.0.19:3000", new WebRequestFactory());
             try
             {
                 var data = await client.GetKingTideEventsAsync();
+                data = data
+                    .OrderByDescending(e => e.Event.HighTideOccurs)
+                    .ToArray();
                 UpdateEvents(data, TideEventsNSW, "nsw");
                 UpdateEvents(data, TideEventsNT, "nt");
                 UpdateEvents(data, TideEventsQLD, "qld");
@@ -58,16 +58,13 @@ namespace KingTides.Wp8.Pan.ViewModels
             catch (Exception e)
             {
             }
-            finally
-            {
-            }
-            this.IsDataLoaded = true;
+            IsDataLoaded = true;
         }
 
         private static void UpdateEvents(IEnumerable<KingTideEvent> data, TideEventsViewModel model, string state)
         {
             model.KingTideEvents.Clear();
-            foreach (var kingTideEvent in data.Where(e => e.Event.state.ToLowerInvariant() == state))
+            foreach (var kingTideEvent in data.Where(e => e.Event.State.ToLowerInvariant() == state))
                 model.KingTideEvents.Add(kingTideEvent);
         }
 

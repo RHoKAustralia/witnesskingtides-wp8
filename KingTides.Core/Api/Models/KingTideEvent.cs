@@ -5,7 +5,8 @@ namespace KingTides.Core.Api.Models
 {
     public class KingTideEvent
     {
-        public string id { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
         [JsonProperty(PropertyName = "event")]
         public TideEvent Event { get; set; }
@@ -13,13 +14,28 @@ namespace KingTides.Core.Api.Models
 
     public class TideEvent
     {
-        public string location { get; set; }
-        public string state { get; set; }
-        public string description { get; set; }
-        public DateTime highTideOccurs { get; set; }
-        public DateTime eventStart { get; set; }
-        public DateTime evetEnd { get; set; }
-        public decimal latitude { get; set; }
-        public string longitude { get; set; }
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; set; }
+
+        [JsonProperty(PropertyName = "state")]
+        public string State { get; set; }
+
+        [JsonProperty(PropertyName = "description")]
+        public string Description { get; set; }
+
+        [JsonProperty(PropertyName = "highTideOccurs")]
+        public DateTime HighTideOccurs { get; set; }
+
+        [JsonProperty(PropertyName = "eventStart")]
+        public DateTime EventStart { get; set; }
+
+        [JsonProperty(PropertyName = "eventEnd")]
+        public DateTime EventEnd { get; set; }
+
+        [JsonProperty(PropertyName = "latitude")]
+        public decimal Latitude { get; set; }
+
+        [JsonProperty(PropertyName = "longitude")]
+        public string Longitude { get; set; }
     }
 }

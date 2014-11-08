@@ -4,6 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:userControls="clr-namespace:KingTides.Wp8.Pan.UserControls"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -15,10 +16,7 @@
         <phone:LongListSelector Margin="0,0,-22,0" ItemsSource="{Binding KingTideEvents}">
             <phone:LongListSelector.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Margin="0,-6,0,12">
-                        <TextBlock Text="{Binding Event.location}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" FontSize="{StaticResource PhoneFontSizeExtraLarge}"/>
-                        <TextBlock Text="{Binding Event.description}" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                    </StackPanel>
+                    <userControls:TideEventUserControl DataContext="{Binding Event}"/>
                 </DataTemplate>
             </phone:LongListSelector.ItemTemplate>
         </phone:LongListSelector>

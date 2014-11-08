@@ -6,10 +6,10 @@ using System.Resources;
 using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
+using KingTides.Core.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using KingTides.Wp8.Pan.Resources;
-using KingTides.Wp8.Pan.ViewModels;
 
 namespace KingTides.Wp8.Pan
 {

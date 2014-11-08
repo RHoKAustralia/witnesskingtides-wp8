@@ -8,9 +8,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:userControls="clr-namespace:KingTides.Wp8.Pan.UserControls"
     xmlns:sampleData="clr-namespace:KingTides.Wp8.Pan.SampleData"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d" 
     d:DataContext="{d:DesignInstance sampleData:ExampleMainViewModel, IsDesignTimeCreatable=True}"
-
+    toolkit:TiltEffect.IsTiltEnabled="True"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
