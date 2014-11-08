@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
+using KingTides.Core.Api.Communication;
+using KingTides.Core.Api.Models;
+using KingTides.Core.ViewModels;
 using KingTides.Wp8.Pan.Resources;
 
 namespace KingTides.Wp8.Pan.ViewModels
@@ -9,46 +14,23 @@ namespace KingTides.Wp8.Pan.ViewModels
     {
         public MainViewModel()
         {
-            this.Items = new ObservableCollection<ItemViewModel>();
+            TideEventsNSW = new TideEventsViewModel();
+            TideEventsVIC = new TideEventsViewModel();
+            TideEventsQLD = new TideEventsViewModel();
+            TideEventsNT = new TideEventsViewModel();
+            TideEventsSA = new TideEventsViewModel();
+            TideEventsWA = new TideEventsViewModel();
+            TideEventsTAS = new TideEventsViewModel();
         }
 
-        /// <summary>
-        /// A collection for ItemViewModel objects.
-        /// </summary>
-        public ObservableCollection<ItemViewModel> Items { get; private set; }
-
-        private string _sampleProperty = "Sample Runtime Property Value";
-        /// <summary>
-        /// Sample ViewModel property; this property is used in the view to display its value using a Binding
-        /// </summary>
-        /// <returns></returns>
-        public string SampleProperty
-        {
-            get
-            {
-                return _sampleProperty;
-            }
-            set
-            {
-                if (value != _sampleProperty)
-                {
-                    _sampleProperty = value;
-                    NotifyPropertyChanged("SampleProperty");
-                }
-            }
-        }
-
-        /// <summary>
-        /// Sample property that returns a localized string
-        /// </summary>
-        public string LocalizedSampleProperty
-        {
-            get
-            {
-                return AppResources.SampleProperty;
-            }
-        }
-
+        public TideEventsViewModel TideEventsNSW { get; private set; }
+        public TideEventsViewModel TideEventsVIC { get; private set; }
+        public TideEventsViewModel TideEventsQLD { get; private set; }
+        public TideEventsViewModel TideEventsNT { get; private set; }
+        public TideEventsViewModel TideEventsSA { get; private set; }
+        public TideEventsViewModel TideEventsWA { get; private set; }
+        public TideEventsViewModel TideEventsTAS { get; private set; }
+        
         public bool IsDataLoaded
         {
             get;
@@ -58,27 +40,35 @@ namespace KingTides.Wp8.Pan.ViewModels
         /// <summary>
         /// Creates and adds a few ItemViewModel objects into the Items collection.
         /// </summary>
-        public void LoadData()
+        public async void LoadData()
         {
-            // Sample data; replace with real data
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime one", LineTwo = "Maecenas praesent accumsan bibendum", LineThree = "Facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime two", LineTwo = "Dictumst eleifend facilisi faucibus", LineThree = "Suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime three", LineTwo = "Habitant inceptos interdum lobortis", LineThree = "Habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime four", LineTwo = "Nascetur pharetra placerat pulvinar", LineThree = "Ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime five", LineTwo = "Maecenas praesent accumsan bibendum", LineThree = "Maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime six", LineTwo = "Dictumst eleifend facilisi faucibus", LineThree = "Pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime seven", LineTwo = "Habitant inceptos interdum lobortis", LineThree = "Accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime eight", LineTwo = "Nascetur pharetra placerat pulvinar", LineThree = "Pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime nine", LineTwo = "Maecenas praesent accumsan bibendum", LineThree = "Facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime ten", LineTwo = "Dictumst eleifend facilisi faucibus", LineThree = "Suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime eleven", LineTwo = "Habitant inceptos interdum lobortis", LineThree = "Habitant inceptos interdum lobortis nascetur pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime twelve", LineTwo = "Nascetur pharetra placerat pulvinar", LineThree = "Ultrices vehicula volutpat maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime thirteen", LineTwo = "Maecenas praesent accumsan bibendum", LineThree = "Maecenas praesent accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime fourteen", LineTwo = "Dictumst eleifend facilisi faucibus", LineThree = "Pharetra placerat pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime fifteen", LineTwo = "Habitant inceptos interdum lobortis", LineThree = "Accumsan bibendum dictumst eleifend facilisi faucibus habitant inceptos interdum lobortis nascetur pharetra placerat" });
-            this.Items.Add(new ItemViewModel() { LineOne = "runtime sixteen", LineTwo = "Nascetur pharetra placerat pulvinar", LineThree = "Pulvinar sagittis senectus sociosqu suscipit torquent ultrices vehicula volutpat maecenas praesent accumsan bibendum" });
-
+            this.IsDataLoaded = false;
+            var client = new Client("http://10.0.0.19:3000", new WebRequestFactory());
+            try
+            {
+                var data = await client.GetKingTideEventsAsync();
+                UpdateEvents(data, TideEventsNSW, "nsw");
+                UpdateEvents(data, TideEventsNT, "nt");
+                UpdateEvents(data, TideEventsQLD, "qld");
+                UpdateEvents(data, TideEventsSA, "sa");
+                UpdateEvents(data, TideEventsTAS, "tas");
+                UpdateEvents(data, TideEventsVIC, "vic");
+                UpdateEvents(data, TideEventsWA, "wa");
+            }
+            catch (Exception e)
+            {
+            }
+            finally
+            {
+            }
             this.IsDataLoaded = true;
+        }
+
+        private static void UpdateEvents(IEnumerable<KingTideEvent> data, TideEventsViewModel model, string state)
+        {
+            model.KingTideEvents.Clear();
+            foreach (var kingTideEvent in data.Where(e => e.Event.state.ToLowerInvariant() == state))
+                model.KingTideEvents.Add(kingTideEvent);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

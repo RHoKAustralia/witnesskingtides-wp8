@@ -3,6 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingTides.Wp8.Pan", "KingTides.Wp8.Pan\KingTides.Wp8.Pan.csproj", "{FD25CFD9-9C65-46A4-8D0C-2EB490DD9DE5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingTides.Core", "KingTides.Core\KingTides.Core.csproj", "{9BAFDC96-D61F-4C58-893A-DED3D801C936}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingTides.Core.Tests", "KingTides.Core.Tests\KingTides.Core.Tests.csproj", "{59FD5CA7-2389-40F9-90AB-A31E3F71919A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F69BE0BB-68AA-4A6B-A6A8-524170A85B51}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +42,22 @@ Global
 		{FD25CFD9-9C65-46A4-8D0C-2EB490DD9DE5}.Release|x86.ActiveCfg = Release|x86
 		{FD25CFD9-9C65-46A4-8D0C-2EB490DD9DE5}.Release|x86.Build.0 = Release|x86
 		{FD25CFD9-9C65-46A4-8D0C-2EB490DD9DE5}.Release|x86.Deploy.0 = Release|x86
+		{9BAFDC96-D61F-4C58-893A-DED3D801C936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BAFDC96-D61F-4C58-893A-DED3D801C936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BAFDC96-D61F-4C58-893A-DED3D801C936}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{9BAFDC96-D61F-4C58-893A-DED3D801C936}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9BAFDC96-D61F-4C58-893A-DED3D801C936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BAFDC96-D61F-4C58-893A-DED3D801C936}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BAFDC96-D61F-4C58-893A-DED3D801C936}.Release|ARM.ActiveCfg = Release|Any CPU
+		{9BAFDC96-D61F-4C58-893A-DED3D801C936}.Release|x86.ActiveCfg = Release|Any CPU
+		{59FD5CA7-2389-40F9-90AB-A31E3F71919A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59FD5CA7-2389-40F9-90AB-A31E3F71919A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59FD5CA7-2389-40F9-90AB-A31E3F71919A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{59FD5CA7-2389-40F9-90AB-A31E3F71919A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{59FD5CA7-2389-40F9-90AB-A31E3F71919A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59FD5CA7-2389-40F9-90AB-A31E3F71919A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59FD5CA7-2389-40F9-90AB-A31E3F71919A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{59FD5CA7-2389-40F9-90AB-A31E3F71919A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
