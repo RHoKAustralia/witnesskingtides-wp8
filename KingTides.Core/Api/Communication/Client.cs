@@ -50,9 +50,9 @@ namespace KingTides.Core.Api.Communication
             return ExtractJSonEntity<Photo[]>(response);
         }
 
-        public async Task<FlickrPhotos> GetPhotosForRangeAsync(DateTime? fromDate = null, DateTime? toDate = null)
+        public async Task<FlickrPhotos> GetPhotosForRangeAsync(DateTime? fromDate = null, DateTime? toDate = null, int per_page = 20, int page = 1)
         {
-            var client = _webRequestFactory.Create(new Uri(_endpoint + string.Format("/photos/search?min_taken_date={0}&max_taken_date={1}", fromDate ?? new DateTime(2000, 1, 1), fromDate ?? new DateTime(2030, 12, 31))));
+            var client = _webRequestFactory.Create(new Uri(_endpoint + string.Format("/photos/search?min_taken_date={0}&max_taken_date={1}&page={2}&per_page={3}", fromDate ?? new DateTime(2000, 1, 1), fromDate ?? new DateTime(2030, 12, 31), page, per_page)));
             var response = await client.GetResponseAsync();
             return ExtractJSonEntity<FlickrPhotos>(response);
         }

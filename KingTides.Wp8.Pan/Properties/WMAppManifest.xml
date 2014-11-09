@@ -1,16 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
-  <DefaultLanguage xmlns="" code="en-US" />
-  <App xmlns="" ProductID="{fd25cfd9-9c65-46a4-8d0c-2eb490dd9de5}" Title="KingTides.Wp8.Pan" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="KingTides.Wp8.Pan author" Description="Sample description" Publisher="KingTides.Wp8.Pan" PublisherID="{16a8c2ea-8b4b-4e93-9fc5-b41940a17efb}">
+  <DefaultLanguage xmlns="" code="en-AU" />
+  <App xmlns="" ProductID="{fd25cfd9-9c65-46a4-8d0c-2eb490dd9de5}" Title="Witness King Tides" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="RHoK" Description="Sample description" Publisher="RHoK" PublisherID="{16a8c2ea-8b4b-4e93-9fc5-b41940a17efb}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_NETWORKING" />
-      <Capability Name="ID_CAP_MEDIALIB_AUDIO" />
-      <Capability Name="ID_CAP_MEDIALIB_PLAYBACK" />
       <Capability Name="ID_CAP_SENSORS" />
-      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
       <Capability Name="ID_CAP_MAP" />
       <Capability Name="ID_CAP_LOCATION" />
+      <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="MainPage.xaml" />

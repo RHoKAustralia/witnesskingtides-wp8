@@ -1,46 +1,74 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace KingTides.Core.Api.Models
 {
     public class FlickrPhotos
     {
-        public FlickrPagePhotos photos { get; set; }
-        public string stat { get; set; }
+        [JsonProperty(PropertyName = "photos")]
+        public FlickrPagePhotos Photos { get; set; }
+        [JsonProperty(PropertyName = "stat")]
+        public string Stat { get; set; }
     }
 
     public class FlickrPagePhotos
     {
-        public int page { get; set; }
-        public int pages { get; set; }
-        public int perpage { get; set; }
-        public int total { get; set; }
+        [JsonProperty(PropertyName = "page")]
+        public int Page { get; set; }
+        [JsonProperty(PropertyName = "pages")]
+        public int Pages { get; set; }
+        [JsonProperty(PropertyName = "perpage")]
+        public int Perpage { get; set; }
+        [JsonProperty(PropertyName = "total")]
+        public int Total { get; set; }
 
-        public FlickrPhoto[] photo { get; set; }
+        [JsonProperty(PropertyName = "photo")]
+        public FlickrPhoto[] Photo { get; set; }
     }
 
     public class FlickrPhoto
     {
-        public string id { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
-        public string title { get; set; }
+        [JsonProperty(PropertyName = "title")]
+        public string Title { get; set; }
 
-        public DateTime datetaken { get; set; }
+        [JsonProperty(PropertyName = "latitude")]
+        public decimal Latitude { get; set; }
 
-        public string ownername { get; set; }
+        [JsonProperty(PropertyName = "longitude")]
+        public string Longitude { get; set; }
 
-        public string originalformat { get; set; }
+        [JsonProperty(PropertyName = "datetaken")]
+        public DateTime Datetaken { get; set; }
 
-        public string url_s { get; set; }
-        public int height_s { get; set; }
-        public int width_s { get; set; }
+        [JsonProperty(PropertyName = "ownername")]
+        public string Ownername { get; set; }
 
-        public string url_c { get; set; }
-        public int height_c { get; set; }
-        public int width_c { get; set; }
+        [JsonProperty(PropertyName = "originalformat")]
+        public string Originalformat { get; set; }
 
-        public string url_o { get; set; }
-        public int height_o { get; set; }
-        public int width_o { get; set; }
+        [JsonProperty(PropertyName = "url_s")]
+        public string UrlS { get; set; }
+        [JsonProperty(PropertyName = "height_s")]
+        public int HeightS { get; set; }
+        [JsonProperty(PropertyName = "width_s")]
+        public int WidthS { get; set; }
+
+        [JsonProperty(PropertyName = "url_c")]
+        public string UrlC { get; set; }
+        [JsonProperty(PropertyName = "height_c")]
+        public int HeightC { get; set; }
+        [JsonProperty(PropertyName = "width_c")]
+        public int WidthC { get; set; }
+
+        [JsonProperty(PropertyName = "url_o")]
+        public string UrlO { get; set; }
+        [JsonProperty(PropertyName = "height_o")]
+        public int HeightO { get; set; }
+        [JsonProperty(PropertyName = "width_o")]
+        public int WidthO { get; set; }
 
     }
 }
