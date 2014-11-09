@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using KingTides.Core.Annotations;
 using KingTides.Core.Api.Communication;
 using KingTides.Core.Api.Models;
@@ -20,12 +18,12 @@ namespace KingTides.Core.ViewModels
         {
             _endpoint = endpoint;
             _factory = factory;
-            Photos = new ObservableCollection<FlickrPhoto>();
+            Photos = new ObservableCollection<LocationPhotoViewModel>();
         }
 
         public TideEvent TideEvent { get; set; }
 
-        public ObservableCollection<FlickrPhoto> Photos { get; private set; }
+        public ObservableCollection<LocationPhotoViewModel> Photos { get; private set; }
 
         public bool ContinueLoading { get; set; }
 
@@ -44,7 +42,7 @@ namespace KingTides.Core.ViewModels
                     foreach (var photo in photos.Photos.Photo)
                     {
                         if (DistanceTo(Convert.ToDouble(photo.Latitude), Convert.ToDouble(photo.Longitude), Convert.ToDouble(TideEvent.Latitude), Convert.ToDouble(TideEvent.Longitude)) < 20)
-                            Photos.Add(photo);
+                            Photos.Add(new LocationPhotoViewModel(photo));
                     }
                     page++;
                 }

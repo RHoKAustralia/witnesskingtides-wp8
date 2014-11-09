@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using KingTides.Core.Api.Models;
 using KingTides.Core.ViewModels;
 
@@ -12,13 +8,13 @@ namespace KingTides.Wp8.Pan.SampleData
     {
         public ExampleMainViewModel() : base(null, null)
         {
-            TideEventsVIC.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location" } });
-            TideEventsNSW.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location" } });
-            TideEventsQLD.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location" } });
-            TideEventsSA.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location" } });
-            TideEventsWA.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location" } });
-            TideEventsTAS.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location" } });
-            TideEventsNT.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location" } });
+            TideEventsVIC.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location", HighTideOccurs = new DateTime(2014, 10, 8, 17, 35, 00)} });
+            TideEventsNSW.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location", HighTideOccurs = new DateTime(2014, 10, 8, 17, 35, 00) } });
+            TideEventsQLD.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location", HighTideOccurs = new DateTime(2014, 10, 8, 17, 35, 00) } });
+            TideEventsSA.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location", HighTideOccurs = new DateTime(2014, 10, 8, 17, 35, 00) } });
+            TideEventsWA.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location", HighTideOccurs = new DateTime(2014, 10, 8, 17, 35, 00) } });
+            TideEventsTAS.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location", HighTideOccurs = new DateTime(2014, 10, 8, 17, 35, 00) } });
+            TideEventsNT.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location", HighTideOccurs = new DateTime(2014, 10, 8, 17, 35, 00) } });
         }
     }
 }

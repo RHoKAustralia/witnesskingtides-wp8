@@ -44,10 +44,12 @@
     <Compile Include="Api\Models\FlickrPhoto.cs" />
     <Compile Include="Api\Models\KingTideEvent.cs" />
     <Compile Include="Api\Models\Photo.cs" />
+    <Compile Include="Extensions\FunctionalExtensions.cs" />
     <Compile Include="Extensions\JsonExtensions.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\PrivateSettings.cs" />
+    <Compile Include="ViewModels\LocationPhotoViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\TideEventsViewModel.cs" />

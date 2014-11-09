@@ -112,6 +112,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SampleData\ExampleLocationViewModel.cs" />
     <Compile Include="SampleData\ExampleMainViewModel.cs" />
     <Compile Include="UserControls\TideEventUserControl.xaml.cs">
       <DependentUpon>TideEventUserControl.xaml</DependentUpon>
