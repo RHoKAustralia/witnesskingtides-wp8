@@ -4,3 +4,4 @@
 /packages
 !packages/repositories.config
 /*.DotSettings
+/KingTides.Wp8.Pan/PrivateSettings.xaml

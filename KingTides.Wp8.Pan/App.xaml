@@ -17,8 +17,12 @@
         </Style>
         
         <local:LocalizedStrings xmlns:local="clr-namespace:KingTides.Wp8.Pan" x:Key="LocalizedStrings"/>
+
+        <ResourceDictionary x:Key="Settings" Source="PrivateSettings.xaml" />
+
     </Application.Resources>
 
+    
     <Application.ApplicationLifetimeObjects>
         <!--Required object that handles lifetime events for the application-->
         <shell:PhoneApplicationService 

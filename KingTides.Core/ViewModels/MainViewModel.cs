@@ -9,8 +9,13 @@ namespace KingTides.Core.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-        public MainViewModel()
+        private readonly string _endpoint;
+        private readonly IWebRequestFactory _factory;
+
+        public MainViewModel(string endpoint, IWebRequestFactory factory)
         {
+            _endpoint = endpoint;
+            _factory = factory;
             TideEventsNSW = new TideEventsViewModel();
             TideEventsVIC = new TideEventsViewModel();
             TideEventsQLD = new TideEventsViewModel();
@@ -40,7 +45,7 @@ namespace KingTides.Core.ViewModels
         public async void LoadData()
         {
             IsDataLoaded = false;
-            var client = new Client("http://10.0.0.19:3000", new WebRequestFactory());
+            var client = new Client(_endpoint, _factory);
             try
             {
                 var data = await client.GetKingTideEventsAsync();

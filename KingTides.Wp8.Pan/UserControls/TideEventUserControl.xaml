@@ -5,14 +5,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:behavior="clr-namespace:KingTides.Wp8.Pan.Behavior"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     mc:Ignorable="d"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="480" d:DesignWidth="480">
 
-    <StackPanel Margin="0,0,10,12">
-
+    <StackPanel Margin="0,0,10,12" Tap="GestureListener_OnTap">
+        
         <i:Interaction.Behaviors>
             <behavior:ClippingBehavior CornerRadius="10" />
         </i:Interaction.Behaviors>
@@ -30,5 +31,4 @@
                    FontSize="{StaticResource PhoneFontSizeMedium}"/>
         
     </StackPanel>
-    
 </UserControl>

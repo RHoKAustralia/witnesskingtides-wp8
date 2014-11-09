@@ -10,7 +10,7 @@ namespace KingTides.Wp8.Pan.SampleData
 {
     public class ExampleMainViewModel : MainViewModel
     {
-        public ExampleMainViewModel()
+        public ExampleMainViewModel() : base(null, null)
         {
             TideEventsVIC.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location" } });
             TideEventsNSW.KingTideEvents.Add(new KingTideEvent { Event = new TideEvent { Description = "some description", Location = "some location" } });
