@@ -1,4 +1,5 @@
-﻿using System.Windows.Navigation;
+﻿using System;
+using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 
 namespace KingTides.Wp8.Pan
@@ -27,6 +28,23 @@ namespace KingTides.Wp8.Pan
             {
                 App.ViewModel.LoadData();
             }
+        }
+
+        private bool _refreshing;
+
+        private void Refresh_OnClick(object sender, EventArgs e)
+        {
+            if (_refreshing) return;
+            _refreshing = true;
+            try
+            {
+                App.ViewModel.LoadData();
+            }
+            finally
+            {
+                _refreshing = false;
+            }
+           
         }
     }
 }

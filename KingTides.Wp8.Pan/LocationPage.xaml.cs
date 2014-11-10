@@ -2,7 +2,9 @@
 using System.Device.Location;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KingTides.Core.Api.Communication;
@@ -12,14 +14,58 @@ using KingTides.Core.Settings;
 using KingTides.Core.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Maps.Controls;
+using Microsoft.Phone.Tasks;
 
 namespace KingTides.Wp8.Pan
 {
     public partial class LocationPage : PhoneApplicationPage
     {
+
+        private readonly PhotoChooserTask _photoChooserTask;
+        private CameraCaptureTask _cameraCaptureTask;
+
+        private WriteableBitmap _writeable;
+
         public LocationPage()
         {
             InitializeComponent();
+            _photoChooserTask = new PhotoChooserTask();
+            _photoChooserTask.Completed += _photoChooserTask_Completed;
+            _cameraCaptureTask = new CameraCaptureTask();
+            _cameraCaptureTask.Completed += _cameraCaptureTask_Completed;
+        }
+
+        void _cameraCaptureTask_Completed(object sender, PhotoResult e)
+        {
+            ExtractPhoto(e);
+        }
+
+        void _photoChooserTask_Completed(object sender, PhotoResult e)
+        {
+            ExtractPhoto(e);
+        }
+
+        private void ExtractPhoto(PhotoResult e)
+        {
+            if (e.TaskResult != TaskResult.OK) return;
+            var image = new BitmapImage();
+            image.SetSource(e.ChosenPhoto);
+            //ViewModel.Picture = image;
+
+            var st = new ScaleTransform
+            {
+                ScaleX = 0.2,
+                ScaleY = 0.2
+            };
+
+            _writeable = new WriteableBitmap(
+                new Image
+                {
+                    Width = 800,
+                    Height = 600,
+                    Visibility = Visibility.Collapsed,
+                    Source = image
+                }, st);
         }
 
         private void MapWithLocation_OnLoaded(object sender, RoutedEventArgs e)
@@ -86,6 +132,16 @@ namespace KingTides.Wp8.Pan
             var layer = new MapLayer {overlay};
 
             MapWithLocation.Layers.Add(layer);
+        }
+
+        private void Upload_OnClick(object sender, EventArgs e)
+        {
+            _photoChooserTask.Show();
+        }
+
+        private void Photo_OnClick(object sender, EventArgs e)
+        {
+            _cameraCaptureTask.Show();
         }
     }
 }

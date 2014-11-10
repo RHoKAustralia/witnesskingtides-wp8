@@ -167,6 +167,9 @@
     <Resource Include="Assets\gc_logo.png" />
     <Resource Include="Assets\main_icon.png" />
     <Resource Include="Assets\rhok_melb.jpeg" />
+    <Content Include="Assets\appbar.feature.camera.rest.png" />
+    <Content Include="Assets\appbar.refresh.rest.png" />
+    <Content Include="Assets\appbar.upload.rest.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
