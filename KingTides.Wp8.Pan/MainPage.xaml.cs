@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
+using Microsoft.Phone.Shell;
 
 namespace KingTides.Wp8.Pan
 {
@@ -26,7 +27,8 @@ namespace KingTides.Wp8.Pan
 
             if (!App.ViewModel.IsDataLoaded)
             {
-                App.ViewModel.LoadData();
+                var data = App.ViewModel.LoadData();
+                PhoneApplicationService.Current.State["KingTideEvents"] = data;
             }
         }
 

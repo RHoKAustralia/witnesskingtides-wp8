@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Navigation;
 using KingTides.Core.Api.Communication;
+using KingTides.Core.Api.Models;
 using KingTides.Core.Settings;
 using KingTides.Core.ViewModels;
 using Microsoft.Phone.Controls;
@@ -29,7 +30,11 @@ namespace KingTides.Wp8.Pan
             {
                 // Delay creation of the view model until necessary
                 if (viewModel == null)
-                    viewModel = new MainViewModel(PrivateSettings.Default.Endpoint, new WebRequestFactory());
+                {
+                    object data = null;
+                    PhoneApplicationService.Current.State.TryGetValue("KingTideEvents", out data);
+                    viewModel = new MainViewModel(PrivateSettings.Default.Endpoint, new WebRequestFactory(), data as KingTideEvent[]);
+                }
 
                 return viewModel;
             }
