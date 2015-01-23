@@ -13,6 +13,7 @@ using KingTides.Core.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using KingTides.Wp8.Pan.Resources;
+using KingTides.Core.Extensions;
 
 namespace KingTides.Wp8.Pan
 {
@@ -33,7 +34,7 @@ namespace KingTides.Wp8.Pan
                 {
                     object data = null;
                     PhoneApplicationService.Current.State.TryGetValue("KingTideEvents", out data);
-                    viewModel = new MainViewModel(PrivateSettings.Default.Endpoint, new WebRequestFactory(), data as KingTideEvent[]);
+                    viewModel = new MainViewModel(PrivateSettings.Default.Endpoint, new WebRequestFactory(), (data as string).Maybe(_ => _.FromJson<KingTideEvent[]>()));
                 }
 
                 return viewModel;

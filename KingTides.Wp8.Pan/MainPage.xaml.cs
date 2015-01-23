@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Navigation;
+using KingTides.Core.Extensions;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -17,7 +18,7 @@ namespace KingTides.Wp8.Pan
         }
 
         // Load data for the ViewModel Items
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             string msg;
             if (NavigationContext.QueryString.TryGetValue("removesplash", out msg))
@@ -27,8 +28,8 @@ namespace KingTides.Wp8.Pan
 
             if (!App.ViewModel.IsDataLoaded)
             {
-                var data = App.ViewModel.LoadData();
-                PhoneApplicationService.Current.State["KingTideEvents"] = data;
+                var data = await App.ViewModel.LoadData();
+                PhoneApplicationService.Current.State["KingTideEvents"] = data.ToJson();
             }
         }
 

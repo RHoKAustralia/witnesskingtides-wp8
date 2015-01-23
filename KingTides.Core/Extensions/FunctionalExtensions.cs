@@ -2,7 +2,7 @@
 
 namespace KingTides.Core.Extensions
 {
-    internal static class FunctionalExtensions
+    public static class FunctionalExtensions
     {
         public static TResult Maybe<T, TResult>(
             this T _this,

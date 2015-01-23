@@ -44,6 +44,7 @@
     <Compile Include="Api\Models\FlickrPhoto.cs" />
     <Compile Include="Api\Models\KingTideEvent.cs" />
     <Compile Include="Api\Models\Photo.cs" />
+    <Compile Include="Api\Models\UploadPhoto.cs" />
     <Compile Include="Extensions\FunctionalExtensions.cs" />
     <Compile Include="Extensions\JsonExtensions.cs" />
     <Compile Include="Properties\Annotations.cs" />
