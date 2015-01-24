@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using KingTides.Core.Api.Communication;
 using KingTides.Core.Api.Models;
 
@@ -12,7 +13,7 @@ namespace KingTides.Core.ViewModels
         private readonly string _endpoint;
         private readonly IWebRequestFactory _factory;
 
-        public MainViewModel(string endpoint, IWebRequestFactory factory)
+        public MainViewModel(string endpoint, IWebRequestFactory factory, KingTideEvent[] events)
         {
             _endpoint = endpoint;
             _factory = factory;
@@ -23,6 +24,8 @@ namespace KingTides.Core.ViewModels
             TideEventsSA = new TideEventsViewModel();
             TideEventsWA = new TideEventsViewModel();
             TideEventsTAS = new TideEventsViewModel();
+
+            UpdateEvents(events);
         }
 
         public TideEventsViewModel TideEventsNSW { get; private set; }
@@ -42,28 +45,36 @@ namespace KingTides.Core.ViewModels
         /// <summary>
         /// Creates and adds a few ItemViewModel objects into the Items collection.
         /// </summary>
-        public async void LoadData()
+        public async Task<KingTideEvent[]> LoadData()
         {
             IsDataLoaded = false;
             var client = new Client(_endpoint, _factory);
+            KingTideEvent[] data = null;
             try
             {
-                var data = await client.GetKingTideEventsAsync();
+                data = await client.GetKingTideEventsAsync();
                 data = data
                     .OrderByDescending(e => e.Event.HighTideOccurs)
                     .ToArray();
-                UpdateEvents(data, TideEventsNSW, "nsw");
-                UpdateEvents(data, TideEventsNT, "nt");
-                UpdateEvents(data, TideEventsQLD, "qld");
-                UpdateEvents(data, TideEventsSA, "sa");
-                UpdateEvents(data, TideEventsTAS, "tas");
-                UpdateEvents(data, TideEventsVIC, "vic");
-                UpdateEvents(data, TideEventsWA, "wa");
+                UpdateEvents(data);
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
             IsDataLoaded = true;
+            return data;
+        }
+
+        private void UpdateEvents(KingTideEvent[] data)
+        {
+            if (data == null) return;
+            UpdateEvents(data, TideEventsNSW, "nsw");
+            UpdateEvents(data, TideEventsNT, "nt");
+            UpdateEvents(data, TideEventsQLD, "qld");
+            UpdateEvents(data, TideEventsSA, "sa");
+            UpdateEvents(data, TideEventsTAS, "tas");
+            UpdateEvents(data, TideEventsVIC, "vic");
+            UpdateEvents(data, TideEventsWA, "wa");
         }
 
         private static void UpdateEvents(IEnumerable<KingTideEvent> data, TideEventsViewModel model, string state)

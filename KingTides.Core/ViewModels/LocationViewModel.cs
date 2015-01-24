@@ -37,7 +37,7 @@ namespace KingTides.Core.ViewModels
                 var page = 1;
                 while (Photos.Count < 20 && ContinueLoading)
                 {
-                    var photos = await client.GetPhotosForRangeAsync(per_page: 100, page: page);
+                    var photos = await client.GetPhotosForRangeAsync(perPage: 100, page: page);
                     if (!photos.Photos.Photo.Any()) return;
                     foreach (var photo in photos.Photos.Photo)
                     {

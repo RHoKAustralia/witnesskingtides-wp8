@@ -8,8 +8,6 @@ namespace KingTides.Core.Api.Communication
         public WebRequest Create(Uri requestUri, string acceptEncoding = null)
         {
             var webrequest = (HttpWebRequest)WebRequest.Create(requestUri);
-            //webrequest.Headers["Origin"] = string.Format("{0}://{1}:{2}", 
-            //    requestUri.Scheme, requestUri.Host, requestUri.Port);
             webrequest.Headers["Origin"] = "http://localhost:5000";
             return webrequest;
         }

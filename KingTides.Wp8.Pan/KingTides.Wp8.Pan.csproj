@@ -99,6 +99,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Converters\CoordinateConverter.cs" />
+    <Compile Include="ExtendedSplashScreen.xaml.cs">
+      <DependentUpon>ExtendedSplashScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LocalizedStrings.cs" />
     <Compile Include="LocationPage.xaml.cs">
       <DependentUpon>LocationPage.xaml</DependentUpon>
@@ -126,6 +129,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="ExtendedSplashScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LocationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +163,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\splash.png" />
+    <Resource Include="Assets\gc_logo.png" />
+    <Resource Include="Assets\main_icon.png" />
+    <Resource Include="Assets\rhok_melb.jpeg" />
+    <Content Include="Assets\appbar.feature.camera.rest.png" />
+    <Content Include="Assets\appbar.refresh.rest.png" />
+    <Content Include="Assets\appbar.upload.rest.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Add.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Cancel.png" />
     <Content Include="Toolkit.Content\ApplicationBar.Check.png" />
