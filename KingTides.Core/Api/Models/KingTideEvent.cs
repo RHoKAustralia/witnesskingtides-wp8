@@ -36,6 +36,6 @@ namespace KingTides.Core.Api.Models
         public decimal Latitude { get; set; }
 
         [JsonProperty(PropertyName = "longitude")]
-        public string Longitude { get; set; }
+        public decimal Longitude { get; set; }
     }
 }

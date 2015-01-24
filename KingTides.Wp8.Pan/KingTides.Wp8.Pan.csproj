@@ -98,7 +98,9 @@
     <Compile Include="Behavior\ClippingBehavior.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\ProgressRing.cs" />
     <Compile Include="Converters\CoordinateConverter.cs" />
+    <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="ExtendedSplashScreen.xaml.cs">
       <DependentUpon>ExtendedSplashScreen.xaml</DependentUpon>
     </Compile>
@@ -117,6 +119,10 @@
     </Compile>
     <Compile Include="SampleData\ExampleLocationViewModel.cs" />
     <Compile Include="SampleData\ExampleMainViewModel.cs" />
+    <Compile Include="SampleData\ExampleUploadPhotoViewModel.cs" />
+    <Compile Include="UploadPhotoPage.xaml.cs">
+      <DependentUpon>UploadPhotoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\TideEventUserControl.xaml.cs">
       <DependentUpon>TideEventUserControl.xaml</DependentUpon>
     </Compile>
@@ -145,6 +151,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UploadPhotoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\TideEventUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,6 +177,7 @@
     <Resource Include="Assets\gc_logo.png" />
     <Resource Include="Assets\main_icon.png" />
     <Resource Include="Assets\rhok_melb.jpeg" />
+    <Content Include="Assets\appbar.camera.send.png" />
     <Content Include="Assets\appbar.feature.camera.rest.png" />
     <Content Include="Assets\appbar.refresh.rest.png" />
     <Content Include="Assets\appbar.upload.rest.png" />

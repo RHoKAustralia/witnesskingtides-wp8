@@ -1,0 +1,90 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="KingTides.Wp8.Pan.UploadPhotoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:sampleData="clr-namespace:KingTides.Wp8.Pan.SampleData"
+    xmlns:controls="clr-namespace:KingTides.Wp8.Pan.Controls"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance sampleData:ExampleUploadPhotoViewModel, IsDesignTimeCreatable=True}"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="False">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn"/>
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn"/>
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    
+    <!--LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot">
+        <phone:Panorama Title="{Binding TideEvent.Location}">
+            <phone:Panorama.Background>
+                <ImageBrush ImageSource="/KingTides.Wp8.Pan;component/Assets/sand-background.png"/>
+            </phone:Panorama.Background>
+            
+            <!--Panorama item one-->
+            <phone:PanoramaItem Header="photo">
+                <Grid>
+                    <Image Name="PhotoImage" Height="400" Width="400"/>
+                    <controls:ProgressRing IsActive="{Binding IsLoading}" Height="150" Width="150"/>
+                </Grid>
+            </phone:PanoramaItem>
+
+            <!--Panorama item two-->
+            <phone:PanoramaItem Header="details">
+                <Grid>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Margin="0,0,0,0" Text="first name" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBox Text="{Binding FirstName, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBooleanConverter}}"/>
+                        <TextBlock Margin="0,0,0,0" Text="last name" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBox Text="{Binding LastName, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBooleanConverter}}"/>
+                        <TextBlock Margin="0,0,0,0" Text="email" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBox Text="{Binding Email, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBooleanConverter}}"/>
+                        <TextBlock Margin="0,0,0,0" Text="description" FontSize="{StaticResource PhoneFontSizeMedium}"/>
+                        <TextBox Text="{Binding Description, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBooleanConverter}}"/>
+                        <CheckBox IsChecked="{Binding UseCurrentLocation, Mode=TwoWay}" IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBooleanConverter}}">
+                            <TextBlock Text="Use current location."/>
+                        </CheckBox>
+                    </StackPanel>
+                    <controls:ProgressRing IsActive="{Binding IsLoading}" Height="150" Width="150"/>
+                </Grid>
+            </phone:PanoramaItem>
+        </phone:Panorama>
+    </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="False" Mode="Default" Opacity=".5">
+            <shell:ApplicationBar.Buttons>
+                <shell:ApplicationBarIconButton Text="Send" 
+                                                IsEnabled="True" 
+                                                IconUri="/Assets/appbar.camera.send.png"
+                                                Click="Send_OnClick"
+                                                />
+            </shell:ApplicationBar.Buttons>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    
+</phone:PhoneApplicationPage>
