@@ -12,4 +12,13 @@ namespace KingTides.Core.Extensions
             return (_this == null) ? defaultReturnValue : func(_this);
         }
     }
+
+    public static class StringExtensions
+    {
+        public static string NullIfEmptyOrWhiteSpace(this string _this)
+        {
+            if (string.IsNullOrWhiteSpace(_this)) return null;
+            return _this;
+        }
+    }
 }

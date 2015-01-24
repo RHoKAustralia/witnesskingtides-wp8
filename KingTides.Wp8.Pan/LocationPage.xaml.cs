@@ -14,6 +14,7 @@ using KingTides.Core.Settings;
 using KingTides.Core.ViewModels;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Maps.Controls;
+using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
 
 namespace KingTides.Wp8.Pan
@@ -23,8 +24,6 @@ namespace KingTides.Wp8.Pan
 
         private readonly PhotoChooserTask _photoChooserTask;
         private CameraCaptureTask _cameraCaptureTask;
-
-        private WriteableBitmap _writeable;
 
         public LocationPage()
         {
@@ -51,21 +50,13 @@ namespace KingTides.Wp8.Pan
             var image = new BitmapImage();
             image.SetSource(e.ChosenPhoto);
             //ViewModel.Picture = image;
+            
+            var location = DataContext as LocationViewModel;
+            if (location == null) return;
 
-            var st = new ScaleTransform
-            {
-                ScaleX = 0.2,
-                ScaleY = 0.2
-            };
+            PhoneApplicationService.Current.State["photo"] = image;
 
-            _writeable = new WriteableBitmap(
-                new Image
-                {
-                    Width = 800,
-                    Height = 600,
-                    Visibility = Visibility.Collapsed,
-                    Source = image
-                }, st);
+            this.NavigationService.Navigate(new Uri(string.Format("/UploadPhotoPage.xaml?data={0}", location.TideEvent.ToJson()), UriKind.Relative));
         }
 
         private void MapWithLocation_OnLoaded(object sender, RoutedEventArgs e)
