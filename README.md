@@ -9,7 +9,7 @@ This is a mobile app (initially targetted to WP8) to support the [Witness King T
 
 [![Build status](https://img.shields.io/appveyor/ci/sawilde/witnesskingtides-wp8.svg)](https://ci.appveyor.com/project/sawilde/witnesskingtides-wp8)
 
-### Slack
+### Team communication
 
-Team communications can be done via [slack](http://slack.com) just visit the [team page](https://wkt.slack.com/) to sign up and join the conversation.
+Team communications can be done via [slack](http://slack.com), raise an issue to request access (include your email - obfuscated if you wish) and we will send you an invite then just visit the [team page](https://wkt.slack.com/) to sign up and join the conversation.
 
