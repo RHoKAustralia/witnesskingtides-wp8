@@ -16,6 +16,7 @@ namespace KingTides.Wp8.Pan.SampleData
                 EventStart = new DateTime(2014, 12, 11),
                 EventEnd = new DateTime(2014, 12, 13)
             };
+            IsLoading = false;
         }
     }
 }

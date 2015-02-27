@@ -290,9 +290,11 @@
 
         <local:LocalizedStrings xmlns:local="clr-namespace:KingTides.Wp8.Pan" x:Key="LocalizedStrings"/>
 
-        <ResourceDictionary x:Key="Settings" Source="PrivateSettings.xaml" />
+        <ResourceDictionary x:Key="Settings" Source="PrivateSettings.xaml"/>
 
+        <converters:BooleanVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+
 
     </Application.Resources>
 

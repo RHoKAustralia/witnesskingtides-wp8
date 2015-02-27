@@ -41,7 +41,7 @@ namespace KingTides.Wp8.Pan
                 return;
             }
 
-            var image = PhoneApplicationService.Current.State["photo"] as BitmapImage;
+            var image = (BitmapImage)PhoneApplicationService.Current.State["photo"];
             PhoneApplicationService.Current.State.Remove("photo");
 
             var st = new ScaleTransform
@@ -53,8 +53,8 @@ namespace KingTides.Wp8.Pan
             _writeable = new WriteableBitmap(
                 new Image
                 {
-                    Width = 800,
-                    Height = 600,
+                    Width = image.PixelWidth,
+                    Height = image.PixelHeight,
                     Visibility = Visibility.Collapsed,
                     Source = image
                 }, st);
@@ -138,13 +138,15 @@ namespace KingTides.Wp8.Pan
         {
             var upload = DataContext as UploadPhotoViewModel;
             if (upload == null) return;
+            if (upload.IsLoading) return;
             upload.IsLoading = true;
             using (var stream = new MemoryStream())
             {
-                _writeable.SaveJpeg(stream, 400, 400, 0, 100);
+                _writeable.SaveJpeg(stream, _writeable.PixelWidth, _writeable.PixelHeight, 0, 100);
                 var binaryData = stream.ToArray();
                 var base64String = Convert.ToBase64String(binaryData, 0, binaryData.Length);
                 var ids = await Task.WhenAll(upload.UploadAsync(base64String), Sleep(3000));
+                //var ids = await Task.WhenAll(Sleep(3000));
                 upload.IsLoading = false;
                 if (!string.IsNullOrWhiteSpace(ids[0]))
                 {

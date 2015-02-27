@@ -99,6 +99,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\ProgressRing.cs" />
+    <Compile Include="Converters\BooleanVisibilityConverter.cs" />
     <Compile Include="Converters\CoordinateConverter.cs" />
     <Compile Include="Converters\InverseBooleanConverter.cs" />
     <Compile Include="ExtendedSplashScreen.xaml.cs">
